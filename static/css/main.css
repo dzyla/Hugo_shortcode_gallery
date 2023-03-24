@@ -1,0 +1,186 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  padding-top: 55px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+main {
+  margin: auto;
+  padding: 0px;
+  flex: 1 0 auto;
+  max-width: 50%;
+  font-size: 17px;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Homepage */
+.intro {}
+
+/* Links with overlay in blog area */
+:root {
+  --mainColor: #dbdbdb;
+}
+
+/* This one shows this opening effect. Now it sucks */
+a.slide {
+  background:
+    linear-gradient(to bottom, var(--mainColor) 0%,
+      var(--mainColor) 100%);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  color: #000;
+  text-decoration: none;
+  transition: background-size 0.5s;
+}
+
+a.slide:hover {
+  background-size: 2px 50px;
+}
+
+.intro>h1 {
+  color: #212121;
+  font-size: 12vh;
+  font-weight: bolder;
+}
+
+.intro>h2 {
+  color: #000000;
+  font-size: 3vmin;
+  font-weight: bolder;
+}
+
+/* Page content */
+.content {
+  padding-top: 20px;
+}
+
+/* Profile picture */
+.profile {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+}
+
+/* Colored links */
+a:link, a:visited {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+a.icon:hover {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent) !important;
+}
+
+/* Colored links for main pages*/
+a.notbold:link, a:visited {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+a.notbold.icon:hover {
+  text-decoration: none;
+}
+
+a.notbold:hover {
+  color: var(--accent) !important;
+}
+
+.smaller {
+  font-size: 1vw;
+}
+
+/* Copyright message */
+.copyright {
+  margin: 15px 0;
+}
+
+/* Paginator */
+.pages {
+  padding: 15px 0;
+}
+
+.pages-icon {
+  padding: 0 15px;
+}
+
+/* List item for posts/projects */
+.item {
+  padding: 10px 0;
+}
+
+.item-tag {
+  background-color: white;
+  color: #747474;
+  font-weight: 300;
+}
+
+/* Navigation icons */
+.navbar-icon {
+  font-size: 125%;
+  display: inline-block !important;
+}
+
+/* Colored borders at top/bottom of page */
+.navbar.navbar-default {
+  border-top: var(--border-width) solid var(--accent);
+}
+
+footer {
+  border-bottom: var(--border-width) solid var(--accent);
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    width: 98%;
+    padding: 1%;
+    max-width: 100%;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .center_img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px), screen and (max-height: 600px) {
+  .intro {}
+
+  .intro>h1 {
+    color: #212121;
+    font-size: 15vw;
+    font-weight: bolder;
+  }
+
+  .intro>h2 {
+    color: #000000;
+    font-size: 5vmin;
+    font-weight: bolder;
+  }
+
+  main {
+    margin-top: 10%;
+    flex: 1 0 auto;
+  }
+}
+
+.center_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

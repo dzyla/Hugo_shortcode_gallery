@@ -1,0 +1,93 @@
+baseURL = "/"
+languageCode = "en-us"
+
+
+
+[params]
+    author = "Dawid Zyla"
+    description = "Dawid Zyla personal blog and portfolio"
+    githubUsername = "dzyla"
+    accent = "black"
+    showBorder = false
+    backgroundColor = "white"
+    font = "Raleway" # should match the name on Google Fonts!
+    highlight = true
+    highlightStyle = "github"
+    highlightLanguages = ["python", "bash", "go"]
+    favicon = "/favicon.ico"
+
+[taxonomies]
+    tag = 'tags'
+
+[[menu.main]]
+      url = "/gallery_column/post1/"
+      name = "gallery_column"
+      weight = 2
+
+[[menu.main]]
+    url = "/gallery_row/post1/"
+    name = "gallery_row"
+    weight = 5
+
+[[menu.icon]]
+    url = "mailto:d.s.zyla@gmail.com"
+    name = "fas fa-envelope"
+    weight = 1
+
+[[menu.icon]]
+    url = "https://www.instagram.com/d.zyla"
+    name = "fab fa-instagram"
+    weight = 2
+
+[[menu.icon]]
+    url = "https://github.com/dzyla/"
+    name = "fab fa-github"
+    weight = 3
+
+[[menu.icon]]
+    url = "https://twitter.com/dawidzyla/"
+    name = "fab fa-twitter"
+    weight = 4
+
+[[menu.icon]]
+    url = "https://www.linkedin.com/in/dawidzyla/"
+    name = "fab fa-linkedin"
+    weight = 5
+
+[[menu.icon]]
+    url = "https://www.stackoverflow.com/users/9024785/dawid"
+    name = "fab fa-stack-overflow"
+    weight = 6
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    noHl = false
+    style = 'github'
+    tabWidth = 4
+
+
+[related]
+  threshold = 1
+  toLower = true
+  includeNewer = true
+  [[related.indices]]
+    name = 'tags'
+    weight = 100
+  [[related.indices]]
+    name = 'date'
+    weight = 10
+
+[sitemap]
+    changefreq = 'monthly'
+    filename = 'sitemap.xml'
+     priority = 0.5
