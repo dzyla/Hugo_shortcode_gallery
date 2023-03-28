@@ -14,4 +14,4 @@ tags:
 ---
 
 
-{{<gallery_row folder="images3/" uniqueID="3" showAlt=true >}}
+{{< gallery_row folder="images3/" uniqueID="3" showAlt=true gap=5 height=150 >}}

@@ -13,4 +13,4 @@ tags:
   - Website
 ---
 
-{{<gallery_column folder="images3/" uniqueID="1" showAlt=true >}}
+{{<gallery_column folder="images3/" uniqueID="1" showAlt=false columns=5 >}}
