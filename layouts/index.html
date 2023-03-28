@@ -1,4 +1,38 @@
 {{ partial "header" . }}
 
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5hv;
+        margin: 0;
+    }
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+    }
+    .button {
+        display: inline-block;
+        background-color: #4cafaf;
+        border: 0;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 24px 24px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #4583a0;
+    }
+</style>
+
+<div class="button-container">
+    <a href="/Hugo_shortcode_gallery/gallery_column/post1/" class="button">Gallery Column</a>
+    <a href="/Hugo_shortcode_gallery/gallery_row/post1/" class="button">Gallery Row</a>
+</div>
  
 {{ partial "footer" . }}

@@ -20,6 +20,11 @@ languageCode = "en-us"
     tag = 'tags'
 
 [[menu.main]]
+      url = "/"
+      name = "Home"
+      weight = 1
+
+[[menu.main]]
       url = "/gallery_column/post1/"
       name = "gallery_column"
       weight = 2
