@@ -92,85 +92,82 @@
 }
 
   
-  .lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(1, 1, 1, 0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(10px);
-  }
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
 
-  {{ if $showAlt }}
-    .lightbox-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, 0.3);
-      color: #fff;
-      padding: 5px;
-      font-size: 12px;
-    }
-  {{ end }}
-
-  .lightbox-img-container img {
-    max-width: 100%;
-    display: block;
-    margin: auto;
-    /* Add conditional check to rescale images that are larger than the screen */
-    max-height: calc(100vh - 150px - 2 * 10px); /* subtract the height of the caption */
-    margin-bottom: 10px; /* Add a margin bottom equal to the height of the caption */
-  }
-
-  .lightbox-img-container img {
-    max-width: 100%;
-    display: block;
-    margin: auto;
-
-    /* Add conditional check to rescale images that are larger than the screen */
-    max-height: calc(100vh - 150px);
-  }
-
-  .lightbox-close-button {
+{{ if $showAlt }}
+  .lightbox-caption {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    background: none;
-    border: none;
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 1em;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 4px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .show-close-button .lightbox-close-button {
-    opacity: 1;
-  }
-  .lightbox-background {
-    position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    padding: 5px;
+    font-size: 12px;
   }
+{{ end }}
+
+.lightbox-img-container {
+  position: relative;
+  max-width: calc(100% - 150px);
+  max-height: calc(100% - 150px);
+}
+
+.lightbox-img-container img {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+
+  /* Add conditional check to rescale images that are larger than the screen */
+  max-height: calc(100vh - 150px);
+}
+
+.lightbox-close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.show-close-button .lightbox-close-button {
+  opacity: 1;
+}
+.lightbox-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: -1;
+}
 
 
-  .lightbox-button {
+.lightbox-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -201,19 +198,16 @@
 </style>
 
 <script>
-
   function initGallery(gallery) {
     gallery.addEventListener('click', function (event) {
       if (event.target.classList.contains('clickable-image')) {
         const clickedImage = event.target;
-        const showAlt = clickedImage.dataset.showAlt === "true";
+        const showAlt = {{ $showAlt }};
         const images = gallery.querySelectorAll('.clickable-image');
 
-      if (event.target.classList.contains('clickable-image')) {
         const image = event.target;
         if (window.innerWidth >= 1000) {
           // create a new element to act as the lightbox popup
-
           const lightbox = document.createElement('div');
           lightbox.classList.add('lightbox');
 
@@ -233,9 +227,6 @@
           // Add the image and caption to the lightbox container
           imgContainer.appendChild(img);
 
-          
-          const showAlt = clickedImage.dataset.showAlt === "true";
-
           if (showAlt) {
             imgContainer.appendChild(caption);
           }
@@ -244,7 +235,7 @@
           img.dataset.currentIndex = Array.from(images).indexOf(event.target);
 
           // add the scale parameter to the img element
-          img.style.maxWidth = "{{ $scale }}";
+          img.style.maxWidth = '{{ $scale }}';
 
           // create a close button element
           const closeButton = document.createElement('button');
@@ -263,8 +254,6 @@
           // add the image and close button to the lightbox container
           imgContainer.appendChild(img);
 
-
-
           imgContainer.appendChild(closeButton);
 
           // Add navigation buttons to the imgContainer
@@ -272,7 +261,6 @@
           imgContainer.appendChild(buttonRight);
 
           lightbox.appendChild(imgContainer);
-
 
           // add the lightbox to the end of the body element
           document.body.appendChild(lightbox);
@@ -311,15 +299,13 @@
             const currentIndex = parseInt(img.dataset.currentIndex, 10);
             const newIndex = (currentIndex - 1 + images.length) % images.length;
             updateImage(newIndex);
-          });
-
+            });
           buttonRight.addEventListener('click', function(event) {
             event.stopPropagation();
             const currentIndex = parseInt(img.dataset.currentIndex, 10);
             const newIndex = (currentIndex + 1) % images.length;
             updateImage(newIndex);
           });
-
 
           // listen for click event on the close button to remove the lightbox
           closeButton.addEventListener('click', function() {
@@ -368,8 +354,7 @@
           });
         }
       }
-    }
-  });
-}
+    });
+  }
 document.querySelectorAll('.image-gallery').forEach(initGallery);
 </script>
