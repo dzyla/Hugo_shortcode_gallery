@@ -10,9 +10,10 @@ def get_exif(file):
     return exif_dict
 
 # Specify the folder containing image files
-folder = 'folder/images2/*.jpg'
-files = glob.glob(folder)
+folder = '/home/didny/dzyla-photo/content/blog/post38/images2/*.jpg'
+files = sorted(glob.glob(folder))
 
+print(files)
 # List of metadata to retrieve
 metadata_location = ['Model', 'LensModel', 'ExposureTime', 'FNumber', 'ISOSpeedRatings', 'FocalLength', 'ApertureValue']
 
@@ -56,7 +57,7 @@ for file in files:
     exif_str_list.append(single_exif)
 
 # Save the list of EXIF strings to a file
-save_file = os.path.join(os.path.dirname(files[0]), 'exif.txt')
+save_file = os.path.join(os.path.dirname(files[0]), 'exif2.txt')
 
 # Write the EXIF strings to the file without brackets and single quotes
 with open(save_file, 'w') as f:
